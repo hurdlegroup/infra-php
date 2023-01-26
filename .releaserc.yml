@@ -5,6 +5,10 @@ plugins:
     - changelogFile: CHANGELOG.md
   - - "@codedependant/semantic-release-docker"
     - dockerLogin: false
+      dockerTags:
+        - '{{env.PHP_VERSION}}'
+        - '{{env.PHP_VERSION}}-{{major}}-latest'
+        - '{{env.PHP_VERSION}}-{{version}}'
       dockerArgs:
         PHP_VERSION: '{{env.PHP_VERSION}}'
   - - "@semantic-release/git"

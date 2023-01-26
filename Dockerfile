@@ -62,10 +62,10 @@ RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install opcache
 
 # Install the PHP pdo_mysql extention
-#RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql
 
 # Install the PHP pdo_pgsql extention
-#RUN docker-php-ext-install pdo_pgsql
+RUN docker-php-ext-install pdo_pgsql
 
 # Install required dependencies
 RUN pecl install \
