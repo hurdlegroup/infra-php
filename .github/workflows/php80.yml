@@ -2,7 +2,9 @@ name: Build php 8.0
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
+    tags:
+      - 'v*'
 env:
   IMAGE_NAME: ${{ github.repository }}
 jobs:
