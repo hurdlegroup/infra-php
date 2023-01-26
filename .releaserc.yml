@@ -10,3 +10,6 @@ plugins:
   - "@semantic-release/github"
   - - "@codedependant/semantic-release-docker"
     - dockerLogin: false
+branches:
+  - "main"
+  - "+([0-9])?(.{+([0-9]),x}).x"
