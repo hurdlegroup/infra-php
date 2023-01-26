@@ -43,41 +43,21 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-# Install for image manipulation
-RUN docker-php-ext-install exif
-
-# Install the PHP pcntl extention
-RUN docker-php-ext-install pcntl
-
-# Install the PHP intl extention
-RUN docker-php-ext-install intl
-
-# Install the PHP gmp extention
-RUN docker-php-ext-install gmp
-
-# Install the PHP bcmath extension
-RUN docker-php-ext-install bcmath
-
-# Install the PHP opcache extention
-RUN docker-php-ext-install opcache
-
-# Install the PHP pdo_mysql extention
-RUN docker-php-ext-install pdo_mysql
-
-# Install the PHP pdo_pgsql extention
-RUN docker-php-ext-install pdo_pgsql
-
-# Install the PHP gd library
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+# Install additional extensions
+RUN docker-php-ext-install \
+    exif \
+    pcntl \
+    intl \
+    gmp \
+    bcmath \
+    opcache \
+    pdo_mysql \
+    pdo_pgsql \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 # Install required dependencies
 RUN pecl install \
-#    gmp \
-#    bcmath \
-#    opcache \
-#    pdo_mysql \
-#    pdo_pgsql \
     sqlsrv pdo_sqlsrv \
     igbinary msgpack \
     zip \
@@ -102,12 +82,10 @@ RUN pecl install \
     apfd
 
 # Install composer and add its bin to the PATH.
-RUN curl -s http://getcomposer.org/installer | php && \
-    echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
-    mv composer.phar /usr/local/bin/composer
-# Source the bash
-RUN . ~/.bashrc
-
+RUN curl -s http://getcomposer.org/installer | php \
+    && echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc \
+    && mv composer.phar /usr/local/bin/composer \
+    && . ~/.bashrc
 
 #
 #--------------------------------------------------------------------------

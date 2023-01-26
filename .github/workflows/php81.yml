@@ -7,6 +7,9 @@ on:
 env:
   IMAGE_NAME: ${{ github.repository }}
   PHP_VERSION: '8.1'
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 jobs:
   build_release:
     runs-on: ubuntu-latest
