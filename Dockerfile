@@ -108,13 +108,6 @@ RUN docker-php-ext-install gd && \
         --with-freetype=/usr/include/freetype2 && \
     docker-php-ext-install gd
 
-#####################################
-# Lumen Schedule Cron Job:
-#####################################
-
-RUN echo "* * * * * root /usr/local/bin/php /var/www/artisan schedule:run >> /dev/null 2>&1"  >> /etc/cron.d/lumen-scheduler
-RUN chmod 0644 /etc/cron.d/lumen-scheduler
-
 #
 #--------------------------------------------------------------------------
 # Final Touch
