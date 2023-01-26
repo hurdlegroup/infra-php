@@ -2,7 +2,7 @@ name: php 8.1
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 env:
   IMAGE_NAME: ${{ github.repository }}
   PHP_VERSION: '8.1'
