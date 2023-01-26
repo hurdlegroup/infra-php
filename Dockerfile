@@ -1,4 +1,5 @@
-# Set the base image for subsequent instructions
+ARG PHP_VERSION=7.4
+
 FROM php:${PHP_VERSION}-fpm-buster
 
 # Install PHP and composer dependencies
