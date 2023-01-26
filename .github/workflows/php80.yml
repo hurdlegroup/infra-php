@@ -1,8 +1,9 @@
 name: php 8.0
 on:
-  push:
-    tags:
-      - '*'
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
 env:
   IMAGE_NAME: ${{ github.repository }}
   PHP_VERSION: '8.0'
