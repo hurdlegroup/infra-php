@@ -30,7 +30,7 @@ jobs:
             type=raw,value=latest,enable=false
             type=ref,event=branch
             type=ref,event=pr
-            type=raw,pattern=${{ env.PHP_VERSION }}
+            type=raw,value=${{ env.PHP_VERSION }}
             type=semver,pattern=${{ env.PHP_VERSION }}-{{version}}
             type=semver,pattern=${{ env.PHP_VERSION }}-{{major}}
             type=semver,pattern=${{ env.PHP_VERSION }}-{{major}}.{{minor}}
