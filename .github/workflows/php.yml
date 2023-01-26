@@ -1,4 +1,4 @@
-name: php 8.1
+name: build php
 on:
   workflow_run:
     workflows: ["Release"]
@@ -6,13 +6,15 @@ on:
       - completed
 env:
   IMAGE_NAME: ${{ github.repository }}
-  PHP_VERSION: '8.1'
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
 jobs:
-  build_release:
+  build_image:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: [ 7.4, 8.0, 8.1 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -34,13 +36,14 @@ jobs:
             type=raw,value=latest,enable=false
             type=ref,event=branch
             type=ref,event=pr
-            type=raw,value=${{ env.PHP_VERSION }}
-            type=semver,pattern=${{ env.PHP_VERSION }}-{{version}}
-            type=semver,pattern=${{ env.PHP_VERSION }}-{{major}}
-            type=semver,pattern=${{ env.PHP_VERSION }}-{{major}}.{{minor}}
+            type=raw,value=${{ matrix.php_version }}
+            type=semver,pattern=${{ matrix.php_version }}-{{version}}
+            type=semver,pattern=${{ matrix.php_version }}-{{major}}
+            type=semver,pattern=${{ matrix.php_version }}-{{major}}.{{minor}}
       - name: Publish
         uses: docker/build-push-action@v3
         with:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            PHP_VERSION=${{ matrix.php_version }}
