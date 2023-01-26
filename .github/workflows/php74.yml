@@ -2,7 +2,7 @@ name: php 7.4
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 env:
   IMAGE_NAME: ${{ github.repository }}
   PHP_VERSION: '7.4'
