@@ -67,6 +67,10 @@ RUN docker-php-ext-install pdo_mysql
 # Install the PHP pdo_pgsql extention
 RUN docker-php-ext-install pdo_pgsql
 
+# Install the PHP gd library
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
+
 # Install required dependencies
 RUN pecl install \
 #    gmp \
@@ -97,16 +101,13 @@ RUN pecl install \
     memcached \
     apfd
 
-#####################################
-# GD:
-#####################################
+# Install composer and add its bin to the PATH.
+RUN curl -s http://getcomposer.org/installer | php && \
+    echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
+    mv composer.phar /usr/local/bin/composer
+# Source the bash
+RUN . ~/.bashrc
 
-# Install the PHP gd library
-RUN docker-php-ext-install gd && \
-    docker-php-ext-configure gd \
-        --with-jpeg=/usr/lib \
-        --with-freetype=/usr/include/freetype2 && \
-    docker-php-ext-install gd
 
 #
 #--------------------------------------------------------------------------
