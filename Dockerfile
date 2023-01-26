@@ -2,7 +2,6 @@ ARG PHP_VERSION=7.4
 
 FROM php:${PHP_VERSION}-fpm-buster
 
-# Install PHP and composer dependencies
 RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libmemcached-dev \
     libmcrypt-dev \
@@ -54,13 +53,13 @@ RUN docker-php-ext-install pcntl
 RUN docker-php-ext-install intl
 
 # Install the PHP gmp extention
-#RUN docker-php-ext-install gmp
+RUN docker-php-ext-install gmp
 
 # Install the PHP bcmath extension
-#RUN docker-php-ext-install bcmath
+RUN docker-php-ext-install bcmath
 
 # Install the PHP opcache extention
-#RUN docker-php-ext-install opcache
+RUN docker-php-ext-install opcache
 
 # Install the PHP pdo_mysql extention
 #RUN docker-php-ext-install pdo_mysql

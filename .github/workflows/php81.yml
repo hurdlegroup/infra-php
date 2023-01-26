@@ -1,4 +1,4 @@
-name: Build php 8.1
+name: php 8.1
 on:
   push:
     branches:
