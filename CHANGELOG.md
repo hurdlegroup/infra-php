@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/hurdlegroup/infra-php/compare/v1.0.7...v1.1.0) (2023-01-26)
+
+
+### Features
+
+* **php:** add composer ([649a735](https://github.com/hurdlegroup/infra-php/commit/649a73598faf4eb11188eadabb5b46461550c438))
+
 ## [1.0.7](https://github.com/hurdlegroup/infra-php/compare/v1.0.6...v1.0.7) (2023-01-26)
 
 
