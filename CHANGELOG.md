@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/hurdlegroup/infra-php/compare/v1.0.2...v1.0.3) (2023-01-26)
+
+
+### Bug Fixes
+
+* **build:** trigger on tag ([d9636af](https://github.com/hurdlegroup/infra-php/commit/d9636af8088b13b7934046b462f8ba640e4a901f))
+
 ## [1.0.2](https://github.com/hurdlegroup/infra-php/compare/v1.0.1...v1.0.2) (2023-01-26)
 
 
