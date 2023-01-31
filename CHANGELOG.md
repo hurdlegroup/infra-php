@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/hurdlegroup/infra-php/compare/v1.1.3...v1.1.4) (2023-01-31)
+
+
+### Bug Fixes
+
+* **php:** disable server tokens ([ccc2376](https://github.com/hurdlegroup/infra-php/commit/ccc237660e8b9c811bb3218a695a68352913014a))
+
 ## [1.1.3](https://github.com/hurdlegroup/infra-php/compare/v1.1.2...v1.1.3) (2023-01-26)
 
 
