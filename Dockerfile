@@ -22,12 +22,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libmagickwand-dev \
     libxml2-dev \
     software-properties-common \
-    locales \
-    gnupg \
-    vim \
-    git \
     cron \
-    curl \
     apt-transport-https \
     unixodbc \
     unixodbc-dev \

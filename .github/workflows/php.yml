@@ -1,5 +1,9 @@
 name: build php
 on:
+  push:
+    branches:
+      - '*'
+      - '!main'
   schedule:
     - cron: '0 8 * * 1'
   workflow_run:
@@ -44,7 +48,7 @@ jobs:
       - name: Publish
         uses: docker/build-push-action@v3
         with:
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             PHP_VERSION=${{ matrix.php_version }}
