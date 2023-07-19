@@ -1,5 +1,9 @@
 name: build php
 on:
+  push:
+    branches:
+      - '*'
+      - '!main'
   schedule:
     - cron: '0 8 * * 1'
   workflow_run:
