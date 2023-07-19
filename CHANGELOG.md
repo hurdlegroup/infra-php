@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/hurdlegroup/infra-php/compare/v1.1.5...v1.1.6) (2023-07-19)
+
+
+### Bug Fixes
+
+* **ci:** fix build and update tokens ([e88df43](https://github.com/hurdlegroup/infra-php/commit/e88df43e3eaea2fb4bc5ec602fef0d6d9a139e0c))
+
 ## [1.1.5](https://github.com/hurdlegroup/infra-php/compare/v1.1.4...v1.1.5) (2023-07-19)
 
 
