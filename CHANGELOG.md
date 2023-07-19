@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/hurdlegroup/infra-php/compare/v1.1.6...v1.1.7) (2023-07-19)
+
+
+### Bug Fixes
+
+* **ci:** tweak build ([6adf849](https://github.com/hurdlegroup/infra-php/commit/6adf84924c39848fa33d7df9ca808fd69c27f619))
+
 ## [1.1.6](https://github.com/hurdlegroup/infra-php/compare/v1.1.5...v1.1.6) (2023-07-19)
 
 
