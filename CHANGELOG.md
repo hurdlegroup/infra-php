@@ -1,3 +1,10 @@
+## [1.1.11](https://github.com/hurdlegroup/infra-php/compare/v1.1.10...v1.1.11) (2023-07-19)
+
+
+### Bug Fixes
+
+* **security:** remove imagick support ([8848125](https://github.com/hurdlegroup/infra-php/commit/8848125f94791a2cdbf2e51264913c9c183602ae))
+
 ## [1.1.10](https://github.com/hurdlegroup/infra-php/compare/v1.1.9...v1.1.10) (2023-07-19)
 
 
