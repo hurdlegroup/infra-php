@@ -1,6 +1,6 @@
 ARG PHP_VERSION=8.0
 
-FROM php:${PHP_VERSION}-fpm-buster
+FROM php:${PHP_VERSION}-fpm-bullseye
 
 RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libmemcached-dev \
@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen \
     && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && apt-add-repository https://packages.microsoft.com/debian/10/prod \
+    && apt-add-repository https://packages.microsoft.com/debian/11/prod \
     && apt-get update && ACCEPT_EULA=Y apt-get install -y --no-install-recommends \
     msodbcsql17 \
     && apt-get -y autoremove \
