@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     libbz2-dev \
-    libmagickwand-dev \
     libxml2-dev \
     software-properties-common \
     locales \
@@ -59,7 +58,6 @@ RUN pecl install \
     igbinary msgpack \
     zip \
     redis \
-    imagick \
     memcached \
     # Install the php apfd extension to allow multi-part/form-data on PUT/PATCH
     apfd \
@@ -74,7 +72,6 @@ RUN pecl install \
     igbinary msgpack \
     zip \
     redis \
-    imagick \
     memcached \
     apfd
 
