@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/hurdlegroup/infra-php/compare/v1.1.9...v1.1.10) (2023-07-19)
+
+
+### Bug Fixes
+
+* **base:** update from buster to bullseye ([1ef8eb0](https://github.com/hurdlegroup/infra-php/commit/1ef8eb071cee6bcf565d5f5ec0482d8b378768bb))
+
 ## [1.1.9](https://github.com/hurdlegroup/infra-php/compare/v1.1.8...v1.1.9) (2023-07-19)
 
 
