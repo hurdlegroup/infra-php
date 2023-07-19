@@ -26,8 +26,6 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     apt-transport-https \
     unixodbc \
     unixodbc-dev \
-    && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
-    && locale-gen \
     && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && apt-add-repository https://packages.microsoft.com/debian/10/prod \
     && apt-get update && ACCEPT_EULA=Y apt-get install -y --no-install-recommends \
