@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/hurdlegroup/infra-php/compare/v1.1.4...v1.1.5) (2023-07-19)
+
+
+### Bug Fixes
+
+* **php:** update supported versions ([0b42f20](https://github.com/hurdlegroup/infra-php/commit/0b42f2024f6a182912e6e8f08eb299e3c86ac4c2))
+
 ## [1.1.4](https://github.com/hurdlegroup/infra-php/compare/v1.1.3...v1.1.4) (2023-01-31)
 
 
