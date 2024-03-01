@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/hurdlegroup/infra-php/compare/v1.1.12...v1.1.13) (2024-03-01)
+
+
+### Bug Fixes
+
+* **app:** force build ([c0038da](https://github.com/hurdlegroup/infra-php/commit/c0038da5bad81e4b8ca2fd0755b9334468901055))
+
 ## [1.1.12](https://github.com/hurdlegroup/infra-php/compare/v1.1.11...v1.1.12) (2024-03-01)
 
 
