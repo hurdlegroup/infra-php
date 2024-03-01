@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && apt-add-repository https://packages.microsoft.com/debian/11/prod \
     && apt-get update && ACCEPT_EULA=Y apt-get install -y --no-install-recommends \
-    msodbcsql17 \
+    msodbcsql18 mssql-tools18 unixodbc-dev \
     && apt-get -y autoremove \
     && rm -rf /var/lib/apt/lists/*
 
