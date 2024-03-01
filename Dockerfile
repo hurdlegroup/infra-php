@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-# Install additional extensions.
+# Install additional extensions
 RUN docker-php-ext-install \
     exif \
     pcntl \
