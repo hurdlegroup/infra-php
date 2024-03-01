@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     locales \
     gnupg \
     cron \
+    top \
     apt-transport-https \
     unixodbc \
     unixodbc-dev \
