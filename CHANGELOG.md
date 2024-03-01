@@ -1,3 +1,10 @@
+## [1.1.15](https://github.com/hurdlegroup/infra-php/compare/v1.1.14...v1.1.15) (2024-03-01)
+
+
+### Bug Fixes
+
+* **ci:** force build ([ce01fb9](https://github.com/hurdlegroup/infra-php/commit/ce01fb968209a8ab473c03238d43cc8cee5564c6))
+
 ## [1.1.14](https://github.com/hurdlegroup/infra-php/compare/v1.1.13...v1.1.14) (2024-03-01)
 
 
