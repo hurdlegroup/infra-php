@@ -55,7 +55,7 @@ RUN docker-php-ext-install \
 
 # Install required dependencies
 RUN pecl install \
-    pdo_sqlsrv \
+#    sqlsrv pdo_sqlsrv \
     igbinary msgpack \
     zip \
     redis \
@@ -69,7 +69,7 @@ RUN pecl install \
     opcache \
     pdo_mysql \
     pdo_pgsql \
-    pdo_sqlsrv \
+#    sqlsrv pdo_sqlsrv \
     igbinary msgpack \
     zip \
     redis \
