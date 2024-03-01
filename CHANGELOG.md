@@ -1,3 +1,10 @@
+## [1.1.16](https://github.com/hurdlegroup/infra-php/compare/v1.1.15...v1.1.16) (2024-03-01)
+
+
+### Bug Fixes
+
+* **app:** fix sqlserv ([27cea95](https://github.com/hurdlegroup/infra-php/commit/27cea95c161ae89885c40060b4245a07b7eda289))
+
 ## [1.1.15](https://github.com/hurdlegroup/infra-php/compare/v1.1.14...v1.1.15) (2024-03-01)
 
 
