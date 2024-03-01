@@ -1,3 +1,10 @@
+## [1.1.18](https://github.com/hurdlegroup/infra-php/compare/v1.1.17...v1.1.18) (2024-03-01)
+
+
+### Bug Fixes
+
+* **app:** remove SQL Server support until issue is fixed ([35b9aba](https://github.com/hurdlegroup/infra-php/commit/35b9aba657b8dcd6d31f704af625f39abe705a67))
+
 ## [1.1.17](https://github.com/hurdlegroup/infra-php/compare/v1.1.16...v1.1.17) (2024-03-01)
 
 
