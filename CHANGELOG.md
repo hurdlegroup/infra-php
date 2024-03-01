@@ -1,3 +1,10 @@
+## [1.1.17](https://github.com/hurdlegroup/infra-php/compare/v1.1.16...v1.1.17) (2024-03-01)
+
+
+### Bug Fixes
+
+* **base:** remove sqlsrv ([ee6ec95](https://github.com/hurdlegroup/infra-php/commit/ee6ec95804f2611339f51d7e8c45fd66a33e3fb7))
+
 ## [1.1.16](https://github.com/hurdlegroup/infra-php/compare/v1.1.15...v1.1.16) (2024-03-01)
 
 
