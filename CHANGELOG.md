@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/hurdlegroup/infra-php/compare/v1.1.11...v1.1.12) (2024-03-01)
+
+
+### Bug Fixes
+
+* **app:** add top ([f8a1687](https://github.com/hurdlegroup/infra-php/commit/f8a1687fe9939053bbc64813562737c75451d205))
+
 ## [1.1.11](https://github.com/hurdlegroup/infra-php/compare/v1.1.10...v1.1.11) (2023-07-19)
 
 
