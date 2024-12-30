@@ -1,6 +1,8 @@
-ARG PHP_VERSION=8.0
+ARG PHP_VERSION=8.2
+ARG DEBIAN_RELEASE=bullseye
+ARG DEBIAN_VERSION=11
 
-FROM php:${PHP_VERSION}-fpm-bullseye
+FROM php:${PHP_VERSION}-fpm-${DEBIAN_RELEASE}
 
 RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libmemcached-dev \
@@ -31,7 +33,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen \
     && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && apt-add-repository https://packages.microsoft.com/debian/11/prod \
+    && apt-add-repository https://packages.microsoft.com/debian/${DEBIAN_VERSION}/prod \
     && apt-get update && ACCEPT_EULA=Y apt-get install -y --no-install-recommends \
     msodbcsql18 mssql-tools18 unixodbc-dev \
     && apt-get -y autoremove \
