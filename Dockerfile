@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libbz2-dev \
     libxml2-dev \
     libevent-dev \
-    libuv1-dev \
     libev-dev \
     software-properties-common \
     locales \
@@ -66,7 +65,7 @@ RUN pecl install \
     redis \
     memcached \
     # Install event extensions
-    event ev uv \
+    event ev \
     # Install the php apfd extension to allow multi-part/form-data on PUT/PATCH
     apfd \
     && docker-php-ext-enable \
@@ -81,7 +80,7 @@ RUN pecl install \
     zip \
     redis \
     memcached \
-    event ev uv \
+    event ev \
     apfd
 
 # Install composer and add its bin to the PATH.
