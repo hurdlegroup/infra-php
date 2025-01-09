@@ -55,9 +55,7 @@ RUN docker-php-ext-install \
     pdo_mysql \
     pdo_pgsql \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
-    # Hacky workaround to make sure event loads after sockets to avoid socket_ce error (Sockets needs to be loaded first)
-    && mv /usr/local/etc/php/conf.d/docker-php-ext-event.ini /usr/local/etc/php/conf.d/docker-php-ext-z-event.ini
+    && docker-php-ext-install -j$(nproc) gd
 
 # Install required dependencies
 RUN pecl install \
@@ -83,7 +81,9 @@ RUN pecl install \
     redis \
     memcached \
     event ev \
-    apfd
+    apfd \
+    # Hacky workaround to make sure event loads after sockets to avoid socket_ce error (Sockets needs to be loaded first)
+    && mv /usr/local/etc/php/conf.d/docker-php-ext-event.ini /usr/local/etc/php/conf.d/docker-php-ext-z-event.ini
 
 # Install composer and add its bin to the PATH.
 RUN curl -s http://getcomposer.org/installer | php \
