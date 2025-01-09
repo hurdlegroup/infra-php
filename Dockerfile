@@ -61,6 +61,8 @@ RUN pecl install \
     zip \
     redis \
     memcached \
+    # Install event extensions
+    event ev uv \
     # Install the php apfd extension to allow multi-part/form-data on PUT/PATCH
     apfd \
     && docker-php-ext-enable \
@@ -75,6 +77,7 @@ RUN pecl install \
     zip \
     redis \
     memcached \
+    event ev uv \
     apfd
 
 # Install composer and add its bin to the PATH.
