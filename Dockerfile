@@ -52,6 +52,7 @@ RUN docker-php-ext-install \
     gmp \
     bcmath \
     opcache \
+    sockets \
     pdo_mysql \
     pdo_pgsql \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -64,7 +65,6 @@ RUN pecl install \
     zip \
     redis \
     memcached \
-    sockets \
     # Install event extensions
     event ev uv \
     # Install the php apfd extension to allow multi-part/form-data on PUT/PATCH
