@@ -21,6 +21,9 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libfreetype6-dev \
     libbz2-dev \
     libxml2-dev \
+    libevent-dev \
+    libuv1-dev \
+    libev-dev \
     software-properties-common \
     locales \
     gnupg \
