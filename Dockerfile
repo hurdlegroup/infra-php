@@ -64,6 +64,7 @@ RUN pecl install \
     zip \
     redis \
     memcached \
+    sockets \
     # Install event extensions
     event ev uv \
     # Install the php apfd extension to allow multi-part/form-data on PUT/PATCH
