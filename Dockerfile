@@ -54,8 +54,10 @@ RUN docker-php-ext-install \
     sockets \
     pdo_mysql \
     pdo_pgsql \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-png --enable-gd-native-ttf \
+    && docker-php-ext-install -j$(nproc) gd \
+    # Hacky workaround to make sure event loads after sockets to avoid socket_ce error (Sockets needs to be loaded first)
+    && mv /usr/local/etc/php/conf.d/docker-php-ext-event.ini /usr/local/etc/php/conf.d/docker-php-ext-z-event.ini
 
 # Install required dependencies
 RUN pecl install \
