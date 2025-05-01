@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libz-dev \
     libpq-dev \
     libjpeg-dev \
+    libwebp-dev \
     libpng-dev \
     libfreetype6-dev \
     libssl-dev \
@@ -54,7 +55,7 @@ RUN docker-php-ext-install \
     sockets \
     pdo_mysql \
     pdo_pgsql \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) gd
 
 # Install required dependencies
