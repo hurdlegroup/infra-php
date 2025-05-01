@@ -55,7 +55,7 @@ RUN docker-php-ext-install \
     sockets \
     pdo_mysql \
     pdo_pgsql \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+    && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 # Install required dependencies
