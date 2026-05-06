@@ -1,9 +1,9 @@
-ARG PHP_VERSION=8.2
-ARG DEBIAN_RELEASE=bullseye
+ARG PHP_VERSION=8.3
+ARG DEBIAN_RELEASE=trixie
 
 FROM php:${PHP_VERSION}-fpm-${DEBIAN_RELEASE}
 
-RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libmemcached-dev \
     libmcrypt-dev \
     libreadline-dev \
@@ -22,20 +22,25 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     libfreetype6-dev \
     libbz2-dev \
     libxml2-dev \
+    libicu-dev \
     libevent-dev \
     libev-dev \
-    software-properties-common \
     locales \
     gnupg \
+    ca-certificates \
     cron \
     procps \
-    apt-transport-https \
     unixodbc \
     unixodbc-dev \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen \
-    && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && apt-add-repository https://packages.microsoft.com/debian/$(cat /etc/debian_version | cut -d. -f1)/prod \
+    && MS_DEBIAN_VERSION="$(. /etc/os-release && echo "$VERSION_ID")" \
+    && if ! curl -fsSL "https://packages.microsoft.com/config/debian/${MS_DEBIAN_VERSION}/packages-microsoft-prod.deb" -o /tmp/packages-microsoft-prod.deb; then \
+        echo "Microsoft repo for Debian ${MS_DEBIAN_VERSION} unavailable, falling back to Debian 12"; \
+        curl -fsSL "https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb" -o /tmp/packages-microsoft-prod.deb; \
+      fi \
+    && dpkg -i /tmp/packages-microsoft-prod.deb \
+    && rm -f /tmp/packages-microsoft-prod.deb \
     && apt-get update && ACCEPT_EULA=Y apt-get install -y --no-install-recommends \
     msodbcsql18 mssql-tools18 unixodbc-dev \
     && apt-get -y autoremove \
