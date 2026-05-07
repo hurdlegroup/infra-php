@@ -3,9 +3,18 @@ on:
   push:
     branches:
       - 'main'
+      - 'beta'
+      - 'alpha'
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 jobs:
-  release:
+  semantic_release:
     runs-on: ubuntu-latest
+    outputs:
+      new_release_published: ${{ steps.semantic.outputs.new_release_published }}
+      new_release_version: ${{ steps.semantic.outputs.new_release_version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,8 +25,58 @@ jobs:
         with:
           node-version: 'lts/*'
       - name: Install dependencies
-        run: npx ci
+        run: npm ci
       - name: Release
+        id: semantic
+        uses: cycjimmy/semantic-release-action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+
+  publish_docker:
+    needs: semantic_release
+    if: needs.semantic_release.outputs.new_release_published == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: [ '8.2', '8.3', '8.4' ]
+    env:
+      IMAGE_NAME: ${{ github.repository }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Resolve release channel
+        id: channel
+        run: |
+          branch="${{ github.ref_name }}"
+          if [ "$branch" = "main" ]; then
+            echo "name=latest" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=$branch" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=${{ matrix.php_version }}-${{ steps.channel.outputs.name }}
+            type=raw,value=${{ matrix.php_version }},enable=${{ steps.channel.outputs.name == 'latest' }}
+            type=raw,value=${{ matrix.php_version }}-${{ needs.semantic_release.outputs.new_release_version }}
+
+      - name: Publish
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            PHP_VERSION=${{ matrix.php_version }}
