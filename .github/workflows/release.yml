@@ -38,7 +38,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php_version: [ '8.2', '8.3', '8.4' ]
+        include:
+          - php_version: '8.2'
+            php_patch_version: '8.2.35'
+          - php_version: '8.3'
+            php_patch_version: '8.3.36'
+          - php_version: '8.4'
+            php_patch_version: '8.4.27'
     env:
       IMAGE_NAME: ${{ github.repository }}
     steps:
@@ -79,4 +85,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
-            PHP_VERSION=${{ matrix.php_version }}
+            PHP_VERSION=${{ matrix.php_patch_version }}
